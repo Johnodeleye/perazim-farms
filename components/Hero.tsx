@@ -1,6 +1,6 @@
 "use client";
 import Image from "next/image";
-import { ArrowRight, Leaf, Wheat, Sprout } from "lucide-react";
+import { ArrowRight, Leaf, Wheat, Sprout, Shield, Award, Truck, Clock, Heart, Star } from "lucide-react";
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
 
@@ -38,6 +38,11 @@ export const Hero = () => {
       gsap.fromTo(".stat-item",
         { opacity: 0, x: -30 },
         { opacity: 1, x: 0, duration: 0.8, stagger: 0.2, delay: 1.3, ease: "power3.out" }
+      );
+
+      gsap.fromTo(".quality-badge",
+        { opacity: 0, y: 20 },
+        { opacity: 1, y: 0, duration: 0.8, stagger: 0.15, delay: 1.5, ease: "power3.out" }
       );
     }, heroRef);
 
@@ -96,10 +101,19 @@ export const Hero = () => {
           </div>
         </div>
 
-        <div className="absolute left-6 md:left-10 lg:left-16 bottom-6 md:bottom-8 lg:hidden flex gap-4">
-          <span className="text-white/60 text-sm md:text-base">HOME1</span>
-          <span className="text-white/60 text-sm md:text-base">HOME2</span>
-          <span className="text-white text-sm md:text-base font-semibold border-b-2 border-yellow-400">HOME3</span>
+        <div className="absolute left-6 md:left-10 lg:left-16 bottom-6 md:bottom-8 flex gap-4 md:gap-5 lg:gap-6">
+          <div className="quality-badge flex items-center gap-1.5 md:gap-2 bg-white/10 backdrop-blur-sm px-3 md:px-4 py-1.5 md:py-2 rounded-full">
+            <Shield className="w-4 h-4 md:w-5 md:h-5 text-yellow-400" />
+            <span className="text-white text-xs md:text-sm font-medium">Premium Quality</span>
+          </div>
+          <div className="quality-badge flex items-center gap-1.5 md:gap-2 bg-white/10 backdrop-blur-sm px-3 md:px-4 py-1.5 md:py-2 rounded-full">
+            <Award className="w-4 h-4 md:w-5 md:h-5 text-yellow-400" />
+            <span className="text-white text-xs md:text-sm font-medium">100% Reliable</span>
+          </div>
+          <div className="quality-badge flex items-center gap-1.5 md:gap-2 bg-yellow-400/20 backdrop-blur-sm px-3 md:px-4 py-1.5 md:py-2 rounded-full border border-yellow-400">
+            <Heart className="w-4 h-4 md:w-5 md:h-5 text-yellow-400" />
+            <span className="text-white text-xs md:text-sm font-semibold">Farm Fresh</span>
+          </div>
         </div>
       </div>
     </section>
