@@ -140,7 +140,7 @@ export const About = () => {
               <div className="space-y-4 md:space-y-6">
                 <div ref={imageRef1} className="relative h-48 md:h-56 lg:h-64 rounded-2xl overflow-hidden shadow-xl transform hover:scale-105 transition-transform duration-500">
                   <Image
-                    src="https://images.unsplash.com/photo-1523348837708-15d4a09cfac2?w=800&auto=format&fit=crop"
+                    src="/john.jpg"
                     alt="Pepper farm"
                     fill
                     className="object-cover"
@@ -149,7 +149,7 @@ export const About = () => {
                 </div>
                 <div ref={imageRef2} className="relative h-56 md:h-64 lg:h-72 rounded-2xl overflow-hidden shadow-xl transform hover:scale-105 transition-transform duration-500">
                   <Image
-                    src="https://images.unsplash.com/photo-1574943320219-553eb213f72d?w=800&auto=format&fit=crop"
+                    src="/farm1.jpg"
                     alt="Fresh vegetables"
                     fill
                     className="object-cover"
@@ -160,7 +160,7 @@ export const About = () => {
               <div className="space-y-4 md:space-y-6 pt-8 md:pt-12">
                 <div ref={imageRef3} className="relative h-64 md:h-72 lg:h-80 rounded-2xl overflow-hidden shadow-xl transform hover:scale-105 transition-transform duration-500">
                   <Image
-                    src="https://images.unsplash.com/photo-1543946207-39bd91b70bcf?w=800&auto=format&fit=crop"
+                    src="/farm2.jpg"
                     alt="Farm animals"
                     fill
                     className="object-cover"
@@ -169,7 +169,7 @@ export const About = () => {
                 </div>
                 <div className="bg-yellow-400 rounded-2xl p-4 md:p-6 shadow-xl transform hover:scale-105 transition-transform duration-500">
                   <div className="text-black font-bold text-xl md:text-2xl">Perazim Farms</div>
-                  <div className="text-black/80 text-sm md:text-base">Est. 2010</div>
+                  <div className="text-black/80 text-sm md:text-base">Est. 2026</div>
                 </div>
               </div>
             </div>
@@ -222,10 +222,10 @@ export const About = () => {
               ))}
             </div>
 
-            <button className="about-button group bg-yellow-400 text-black px-8 md:px-10 py-3 md:py-4 text-base md:text-lg font-semibold hover:bg-black hover:text-white transition-colors inline-flex items-center gap-2 cursor-pointer rounded-xl">
+            <a href="https://wa.me/+23481346366" className="about-button group bg-yellow-400 text-black px-8 md:px-10 py-3 md:py-4 text-base md:text-lg font-semibold hover:bg-black hover:text-white transition-colors inline-flex items-center gap-2 cursor-pointer rounded-xl">
               Learn More About Us
               <Sprout className="w-5 h-5 group-hover:rotate-12 transition-transform" />
-            </button>
+            </a>
           </div>
         </div>
       </div>
