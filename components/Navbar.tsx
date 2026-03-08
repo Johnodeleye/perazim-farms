@@ -1,8 +1,9 @@
 "use client";
 import Link from "next/link";
 import Image from "next/image";
-import { Phone, Menu, X, } from "lucide-react";
+import { Phone, Menu, X } from "lucide-react";
 import { useState, useEffect, useRef } from "react";
+import { usePathname } from "next/navigation";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
@@ -11,7 +12,17 @@ gsap.registerPlugin(ScrollTrigger);
 export const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const navItems = ["HOME", "PAGES", "SERVICES", "PORTFOLIO", "BLOG"];
+  const pathname = usePathname();
+  const currentHash = typeof window !== 'undefined' ? window.location.hash : '';
+  
+  const navItems = [
+    { name: "HOME", href: "/" },
+    { name: "PRODUCTS", href: "/#products" },
+    { name: "SERVICES", href: "/#services" },
+    { name: "MEDIA", href: "/#media" },
+    { name: "BLOG", href: "/#blog" }
+  ];
+  
   const menuRef = useRef<HTMLDivElement>(null);
   const navRef = useRef<HTMLElement>(null);
   const logoRef = useRef<HTMLAnchorElement>(null);
@@ -30,11 +41,7 @@ export const Navbar = () => {
 
     const handleScroll = () => {
       const scrollPosition = window.scrollY;
-      if (scrollPosition > 50) {
-        setScrolled(true);
-      } else {
-        setScrolled(false);
-      }
+      setScrolled(scrollPosition > 50);
     };
 
     window.addEventListener("scroll", handleScroll);
@@ -59,13 +66,6 @@ export const Navbar = () => {
 
       gsap.to(".phone-number", {
         color: scrolled ? "#1f2937" : "#ffffff",
-        duration: 0.3,
-        ease: "power2.inOut"
-      });
-
-      gsap.to(".get-in-touch", {
-        backgroundColor: scrolled ? "#eab308" : "#eab308",
-        color: scrolled ? "#000000" : "#000000",
         duration: 0.3,
         ease: "power2.inOut"
       });
@@ -157,6 +157,13 @@ export const Navbar = () => {
     });
   };
 
+  const isActive = (href: string) => {
+    if (href === "/") {
+      return pathname === "/" && !currentHash;
+    }
+    return currentHash === href.replace("/#", "#");
+  };
+
   return (
     <nav 
       ref={navRef}
@@ -184,12 +191,17 @@ export const Navbar = () => {
         <div className="hidden lg:flex items-center gap-8 xl:gap-12">
           {navItems.map((item) => (
             <Link
-              key={item}
-              href={`/${item.toLowerCase()}`}
-              className="nav-item nav-link text-white/90 hover:text-yellow-400 transition-colors text-sm font-medium tracking-wide relative after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-0.5 after:bg-yellow-400 after:transition-all after:duration-300 hover:after:w-full"
-              style={{ color: scrolled ? '#1f2937' : 'rgba(255, 255, 255, 0.9)' }}
+              key={item.name}
+              href={item.href}
+              className="nav-item nav-link text-white/90 hover:text-yellow-400 transition-colors text-sm font-medium tracking-wide relative after:absolute after:bottom-[-4px] after:left-0 after:h-0.5 after:bg-yellow-400 after:transition-all after:duration-300"
+              style={{ 
+                color: scrolled ? '#1f2937' : 'rgba(255, 255, 255, 0.9)'
+              }}
             >
-              {item}
+              {item.name}
+              {isActive(item.href) && (
+                <span className="absolute bottom-[-4px] left-0 w-full h-0.5 bg-yellow-400" />
+              )}
             </Link>
           ))}
           
@@ -203,9 +215,13 @@ export const Navbar = () => {
             </span>
           </Link>
           
-          <button className="nav-item get-in-touch bg-yellow-400 text-black px-6 xl:px-8 py-2.5 xl:py-3 text-sm font-semibold hover:bg-white transition-colors cursor-pointer">
+          <Link 
+            href="https://wa.me/2349132445279?text=Hello%20Perazim%20Farms%2C%20I%20would%20like%20to%20make%20an%20enquiry"
+            target="_blank"
+            className="nav-item get-in-touch bg-yellow-400 text-black px-6 xl:px-8 py-2.5 xl:py-3 text-sm font-semibold hover:bg-white transition-colors cursor-pointer"
+          >
             GET IN TOUCH
-          </button>
+          </Link>
         </div>
 
         <button 
@@ -237,15 +253,18 @@ export const Navbar = () => {
           
           {navItems.map((item, index) => (
             <Link
-              key={item}
-              href={`/${item.toLowerCase()}`}
+              key={item.name}
+              href={item.href}
               ref={(el: HTMLAnchorElement | null) => {
                 menuItemsRef.current[index] = el;
               }}
-              className="text-white hover:text-yellow-400 text-2xl font-medium transition-colors relative after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-0.5 after:bg-yellow-400 after:transition-all after:duration-300 hover:after:w-full"
+              className="text-white hover:text-yellow-400 text-2xl font-medium transition-colors relative"
               onClick={closeMenu}
             >
-              {item}
+              {item.name}
+              {isActive(item.href) && (
+                <span className="absolute bottom-[-4px] left-0 w-full h-0.5 bg-yellow-400" />
+              )}
             </Link>
           ))}
           
@@ -261,15 +280,17 @@ export const Navbar = () => {
             <span className="text-white text-lg font-semibold">+234 913 244 5279</span>
           </Link>
           
-          <button 
-            ref={(el: HTMLButtonElement | null) => {
+          <Link 
+            href="https://wa.me/2349132445279?text=Hello%20Perazim%20Farms%2C%20I%20would%20like%20to%20make%20an%20enquiry"
+            target="_blank"
+            ref={(el: HTMLAnchorElement | null) => {
               menuItemsRef.current[navItems.length + 1] = el;
             }}
             className="bg-yellow-400 text-black px-10 py-4 text-lg font-semibold hover:bg-white transition-colors mt-4 cursor-pointer"
             onClick={closeMenu}
           >
             GET IN TOUCH
-          </button>
+          </Link>
         </div>
       )}
     </nav>

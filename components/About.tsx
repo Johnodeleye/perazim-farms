@@ -118,9 +118,9 @@ export const About = () => {
   }, []);
 
   const products = [
-    { icon: <Sprout className="w-6 h-6" />, name: "Peppers" },
-    { icon: <Leaf className="w-6 h-6" />, name: "Vegetables" },
-    { icon: <Apple className="w-6 h-6" />, name: "Fruits" },
+    { icon: <Sprout className="w-6 h-6" />, name: "Super Habanero" },
+    { icon: <Leaf className="w-6 h-6" />, name: "Tomatoes" },
+    { icon: <Apple className="w-6 h-6" />, name: "Bell Pepper" },
     { icon: <Wheat className="w-6 h-6" />, name: "Root Crops" },
     { icon: <PiggyBank className="w-6 h-6" />, name: "Livestock" },
   ];

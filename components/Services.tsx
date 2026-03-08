@@ -1,9 +1,10 @@
 "use client";
 import Image from "next/image";
+import Link from "next/link";
 import { 
   Sprout, Tractor, Package, Truck, 
   ShoppingBag, Leaf, Droplet, Sun,
-  Clock, Shield, Phone, ArrowRight
+  Phone, ArrowRight
 } from "lucide-react";
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
@@ -60,41 +61,45 @@ export const Services = () => {
 
   const services = [
     {
+      id: "nursery",
       title: "Nursery & Seedlings",
       description: "Quality pepper nurseries and vegetable seedlings for aspiring farmers.",
       icon: <Sprout className="w-8 h-8" />,
-      image: "https://images.unsplash.com/photo-1523348837708-15d4a09cfac2?w=800&auto=format&fit=crop",
+      image: "https://images.unsplash.com/photo-1771712256832-c75c2439e514?q=80&w=687&auto=format&fit=crop",
       features: ["Pepper Nursery", "Tomato Seedlings", "Vegetable Starts"],
       color: "from-green-500 to-emerald-600"
     },
     {
+      id: "processing",
       title: "Farm Processing",
       description: "Cassava processing into garri, flour, and other value-added products.",
       icon: <Package className="w-8 h-8" />,
-      image: "https://images.unsplash.com/photo-1574943320219-553eb213f72d?w=800&auto=format&fit=crop",
+      image: "/pro.jpg",
       features: ["Garri Processing", "Cassava Flour", "Packing"],
       color: "from-amber-500 to-yellow-600"
     },
     {
+      id: "livestock",
       title: "Livestock Rearing",
       description: "Expert pig farming and livestock management with healthy breeding practices.",
       icon: <Tractor className="w-8 h-8" />,
-      image: "https://images.unsplash.com/photo-1543946207-39bd91b70bcf?w=800&auto=format&fit=crop",
-      features: ["Pig Farming", "Broilers", "Fish Pond"],
+      image: "https://images.unsplash.com/photo-1651592279311-120424784c06?q=80&w=1974&auto=format&fit=crop",
+      features: ["Pig Farming", "Broilers", "Goat"],
       color: "from-orange-500 to-red-600"
     },
     {
+      id: "delivery",
       title: "Farm Fresh Delivery",
       description: "Direct from farm to your table with our reliable delivery service.",
       icon: <Truck className="w-8 h-8" />,
-      image: "https://images.unsplash.com/photo-1582284540020-8acbe03f4924?w=800&auto=format&fit=crop",
+      image: "https://images.unsplash.com/photo-1761839257874-e56dfa2260cb?q=80&w=1469&auto=format&fit=crop",
       features: ["Same Day Delivery", "Farm Pickup", "Wholesale Orders"],
       color: "from-blue-500 to-cyan-600"
     }
   ];
 
   return (
-    <section ref={sectionRef} className="py-20 md:py-24 lg:py-28 bg-gray-50 overflow-hidden">
+    <section id="services" ref={sectionRef} className="py-20 md:py-24 lg:py-28 bg-gray-50 overflow-hidden scroll-mt-20">
       <div className="max-w-7xl mx-auto px-6 md:px-10 lg:px-16">
         <div className="text-center mb-16 md:mb-20">
           <span className="services-badge inline-flex items-center gap-2 text-yellow-600 text-sm md:text-base font-semibold tracking-wider mb-4">
@@ -156,15 +161,22 @@ export const Services = () => {
                   </div>
 
                   <div className="flex items-center gap-4">
-                    <button className="flex items-center gap-2 text-yellow-600 font-semibold hover:text-yellow-700 transition-colors group/btn">
+                    <Link 
+                      href={`/services/${service.id}`}
+                      className="flex items-center gap-2 text-yellow-600 font-semibold hover:text-yellow-700 transition-colors group/btn cursor-pointer"
+                    >
                       Learn More
                       <ArrowRight className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform" />
-                    </button>
+                    </Link>
                     
-                    <button className="flex items-center gap-2 bg-gray-100 hover:bg-yellow-400 px-4 py-2 rounded-full transition-colors group/call">
+                    <Link 
+                      href={`https://wa.me/2349132445279?text=Hello%20Perazim%20Farms%2C%20I%27m%20interested%20in%20your%20${service.title.toLowerCase()}%20services`}
+                      target="_blank"
+                      className="flex items-center gap-2 bg-gray-100 hover:bg-yellow-400 px-4 py-2 rounded-full transition-colors group/call cursor-pointer"
+                    >
                       <Phone className="w-4 h-4 text-gray-600 group-hover/call:text-black" />
                       <span className="text-sm font-medium">Contact</span>
-                    </button>
+                    </Link>
                   </div>
                 </div>
               </div>
@@ -185,14 +197,22 @@ export const Services = () => {
               Whether you're looking for fresh produce, seedlings, or farm processing services, we're here to help
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <button className="bg-black text-white px-8 py-4 rounded-full font-semibold hover:bg-gray-900 transition-colors inline-flex items-center gap-2 justify-center">
+              <Link 
+                href={`https://wa.me/2349132445279?text=Hello%20Perazim%20Farms%2C%20I%20would%20like%20to%20place%20an%20order`}
+                target="_blank"
+                className="bg-black text-white px-8 py-4 rounded-full font-semibold hover:bg-gray-900 transition-colors inline-flex items-center gap-2 justify-center cursor-pointer"
+              >
                 <ShoppingBag className="w-5 h-5" />
                 Place Order
-              </button>
-              <button className="bg-white text-black px-8 py-4 rounded-full font-semibold hover:bg-gray-100 transition-colors inline-flex items-center gap-2 justify-center">
+              </Link>
+              <Link 
+                href={`https://wa.me/2349132445279?text=Hello%20Perazim%20Farms%2C%20I%20would%20like%20to%20inquire%20about%20your%20services`}
+                target="_blank"
+                className="bg-white text-black px-8 py-4 rounded-full font-semibold hover:bg-gray-100 transition-colors inline-flex items-center gap-2 justify-center cursor-pointer"
+              >
                 <Phone className="w-5 h-5" />
                 Contact Sales
-              </button>
+              </Link>
             </div>
           </div>
         </div>

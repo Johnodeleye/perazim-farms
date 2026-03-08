@@ -1,5 +1,6 @@
 "use client";
 import Image from "next/image";
+import Link from "next/link";
 import { 
   Sprout, PiggyBank, Apple, Wheat, 
   ShoppingCart, Star, Flame, Droplet,
@@ -61,37 +62,51 @@ export const Products = () => {
 
   const products = [
     {
+      id: "peppers-vegetables",
       category: "Peppers & Vegetables",
       icon: <Flame className="w-8 h-8" />,
       items: ["Pepper Nursery", "Green Pepper", "Tomatoes", "Scotch Bonnet", "Bell Peppers"],
-      image: "https://images.unsplash.com/photo-1523348837708-15d4a09cfac2?w=800&auto=format&fit=crop",
-      color: "from-red-500 to-orange-500"
+      image: "https://images.unsplash.com/photo-1567539549213-cc1697632146?q=80&w=687&auto=format&fit=crop",
+      color: "from-red-500 to-orange-500",
+      message: "Hello Perazim Farms, I want to order Peppers and Vegetables"
     },
     {
+      id: "root-crops",
       category: "Root Crops & Tubers",
       icon: <Wheat className="w-8 h-8" />,
       items: ["Cassava", "Garri Processing", "Yam", "Sweet Potatoes", "Cocoyam"],
       image: "https://images.unsplash.com/photo-1574943320219-553eb213f72d?w=800&auto=format&fit=crop",
-      color: "from-amber-600 to-yellow-600"
+      color: "from-amber-600 to-yellow-600",
+      message: "Hello Perazim Farms, I want to order Root Crops and Tubers"
     },
     {
+      id: "fruits",
       category: "Fruits & Produce",
       icon: <Apple className="w-8 h-8" />,
       items: ["Watermelon", "Plantain", "Banana", "Pineapple", "Pawpaw"],
-      image: "https://images.unsplash.com/photo-1582284540020-8acbe03f4924?w=800&auto=format&fit=crop",
-      color: "from-green-500 to-emerald-600"
+      image: "https://images.unsplash.com/photo-1690483705837-41fb4c90b5f1?q=80&w=687&auto=format&fit=crop",
+      color: "from-green-500 to-emerald-600",
+      message: "Hello Perazim Farms, I want to order Fruits and Produce"
     },
     {
+      id: "livestock",
       category: "Livestock",
       icon: <PiggyBank className="w-8 h-8" />,
-      items: ["Pig Farming", "Broilers", "Layers", "Fish Farming", "Goats"],
-      image: "https://images.unsplash.com/photo-1543946207-39bd91b70bcf?w=800&auto=format&fit=crop",
-      color: "from-amber-700 to-brown-600"
+      items: ["Pig Farming", "Broilers", "Layers", "Goats"],
+      image: "https://images.unsplash.com/photo-1655307550020-3eb7efdef723?q=80&w=880&auto=format&fit=crop",
+      color: "from-amber-700 to-brown-600",
+      message: "Hello Perazim Farms, I want to order Livestock products"
     }
   ];
 
+  const handleWhatsAppOrder = (product: typeof products[0]) => {
+    const phoneNumber = "2349132445279";
+    const message = encodeURIComponent(product.message);
+    window.open(`https://wa.me/${phoneNumber}?text=${message}`, "_blank");
+  };
+
   return (
-    <section ref={sectionRef} className="py-20 md:py-24 lg:py-28 bg-gradient-to-b from-white to-gray-50 overflow-hidden">
+    <section id="products" ref={sectionRef} className="py-20 md:py-24 lg:py-28 bg-gradient-to-b from-white to-gray-50 overflow-hidden scroll-mt-20">
       <div className="max-w-7xl mx-auto px-6 md:px-10 lg:px-16">
         <div ref={titleRef} className="text-center mb-16 md:mb-20">
           <span className="products-badge inline-flex items-center gap-2 text-yellow-600 text-sm md:text-base font-semibold tracking-wider mb-4">
@@ -115,7 +130,8 @@ export const Products = () => {
               ref={(el: HTMLDivElement | null) => {
                 productsRef.current[index] = el;
               }}
-              className="group relative bg-white rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2"
+              onClick={() => handleWhatsAppOrder(product)}
+              className="group relative bg-white rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 cursor-pointer"
             >
               <div className="relative h-56 overflow-hidden">
                 <Image
@@ -158,7 +174,13 @@ export const Products = () => {
                     <Award className="w-4 h-4 text-yellow-500" />
                     <span className="text-xs text-gray-500">Farm Fresh</span>
                   </div>
-                  <button className="text-yellow-600 hover:text-yellow-700 font-medium text-sm flex items-center gap-1 group/btn">
+                  <button 
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      handleWhatsAppOrder(product);
+                    }}
+                    className="text-yellow-600 hover:text-yellow-700 font-medium text-sm flex items-center gap-1 group/btn cursor-pointer"
+                  >
                     Order Now
                     <ShoppingCart className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform" />
                   </button>
