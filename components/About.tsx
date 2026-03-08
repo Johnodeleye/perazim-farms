@@ -1,5 +1,6 @@
 "use client";
 import Image from "next/image";
+import Link from "next/link";
 import { Leaf, Wheat, Sprout, PiggyBank, Apple, Award, Users, Truck } from "lucide-react";
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
@@ -8,12 +9,12 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger);
 
 export const About = () => {
-  const sectionRef = useRef(null);
-  const imageRef1 = useRef(null);
-  const imageRef2 = useRef(null);
-  const imageRef3 = useRef(null);
-  const textRef = useRef(null);
-  const statsRef = useRef(null);
+  const sectionRef = useRef<HTMLElement>(null);
+  const imageRef1 = useRef<HTMLDivElement>(null);
+  const imageRef2 = useRef<HTMLDivElement>(null);
+  const imageRef3 = useRef<HTMLDivElement>(null);
+  const textRef = useRef<HTMLDivElement>(null);
+  const statsRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -169,7 +170,7 @@ export const About = () => {
                 </div>
                 <div className="bg-yellow-400 rounded-2xl p-4 md:p-6 shadow-xl transform hover:scale-105 transition-transform duration-500">
                   <div className="text-black font-bold text-xl md:text-2xl">Perazim Farms</div>
-                  <div className="text-black/80 text-sm md:text-base">Est. 2026</div>
+                  <div className="text-black/80 text-sm md:text-base">Est. 2026 | Ogun State, Nigeria</div>
                 </div>
               </div>
             </div>
@@ -192,7 +193,7 @@ export const About = () => {
             </div>
 
             <p className="about-text text-gray-600 text-base md:text-lg leading-relaxed">
-              Perazim Farms is dedicated to sustainable farming, producing fresh peppers & vegetations, fruits, root crops, and livestock for our community.
+              Perazim Farms is dedicated to sustainable farming, producing fresh peppers & vegetations, fruits, root crops, and livestock for our community in Ogun State, Nigeria.
             </p>
 
             <p className="about-text text-gray-600 text-base md:text-lg leading-relaxed">
@@ -222,10 +223,13 @@ export const About = () => {
               ))}
             </div>
 
-            <a href="https://wa.me/+23481346366" className="about-button group bg-yellow-400 text-black px-8 md:px-10 py-3 md:py-4 text-base md:text-lg font-semibold hover:bg-black hover:text-white transition-colors inline-flex items-center gap-2 cursor-pointer rounded-xl">
+            <Link 
+              href="/#services"
+              className="about-button group bg-yellow-400 text-black px-8 md:px-10 py-3 md:py-4 text-base md:text-lg font-semibold hover:bg-black hover:text-white transition-colors inline-flex items-center gap-2 cursor-pointer rounded-xl"
+            >
               Learn More About Us
               <Sprout className="w-5 h-5 group-hover:rotate-12 transition-transform" />
-            </a>
+            </Link>
           </div>
         </div>
       </div>

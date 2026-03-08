@@ -162,7 +162,8 @@ export const Services = () => {
 
                   <div className="flex items-center gap-4">
                     <Link 
-                      href={`/services/${service.id}`}
+                      href={`https://wa.me/2349132445279?text=Hello%20Perazim%20Farms%2C%20I%27want%20to%20learn%more%20about%20your%20${service.title.toLowerCase()}%20services`}
+                      target="_blank"
                       className="flex items-center gap-2 text-yellow-600 font-semibold hover:text-yellow-700 transition-colors group/btn cursor-pointer"
                     >
                       Learn More
