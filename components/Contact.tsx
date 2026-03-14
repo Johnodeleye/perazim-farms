@@ -195,25 +195,13 @@ export const Contact = () => {
               </div>
             </div>
 
-            <div className="relative h-64 rounded-3xl overflow-hidden shadow-xl">
-              <Image
-                src="https://images.unsplash.com/photo-1527683611643-4009f3b7615b?q=80&w=735&auto=format&fit=crop"
-                alt="Perazim Farms Location"
-                fill
-                className="object-cover"
-              />
-              <div className="absolute inset-0 bg-black/40" />
-              <div className="absolute inset-0 flex items-center justify-center">
-                <Link 
-                  href="https://maps.google.com/?q=Ogun+State+Nigeria"
-                  target="_blank"
-                  className="bg-yellow-400 text-black px-6 py-3 rounded-full font-semibold hover:bg-white transition-colors inline-flex items-center gap-2"
-                >
-                  <MapPin className="w-5 h-5" />
-                  View on Google Maps
-                </Link>
-              </div>
-            </div>
+<div className="relative h-64 rounded-3xl overflow-hidden shadow-xl">
+  <iframe
+    src="https://maps.google.com/maps?q=Ogun%20State%20Nigeria&t=&z=13&ie=UTF8&iwloc=&output=embed"
+    className="w-full h-full border-0"
+    loading="lazy"
+  />
+</div>
           </div>
 
           <div ref={rightRef} className="bg-white rounded-3xl p-8 shadow-xl border border-gray-100">
