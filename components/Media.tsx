@@ -86,6 +86,14 @@ export const Media = () => {
     },
     {
       type: "image",
+      url: "/pro.jpg",
+      thumbnail: "/pro.jpg",
+      title: "Pepper Harvest",
+      category: "behind-scenes",
+      description: "Fresh peppers ready for harvest at Perazim Farms"
+    },
+    {
+      type: "image",
       url: "https://images.unsplash.com/photo-1567539549213-cc1697632146?w=1200&auto=format&fit=crop",
       thumbnail: "https://images.unsplash.com/photo-1567539549213-cc1697632146?w=800&auto=format&fit=crop",
       title: "Vegetable Garden",

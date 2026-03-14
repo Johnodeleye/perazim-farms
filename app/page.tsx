@@ -5,6 +5,9 @@ import { Products } from "@/components/Products";
 import { WhyChooseUs } from "@/components/WhyChooseUs";
 import { Services } from "@/components/Services";
 import { Media } from "@/components/Media";
+import { Blog } from "@/components/Blog";
+import { Contact } from "@/components/Contact";
+import { Footer } from "@/components/Footer";
 
 export default function Home() {
   return (
@@ -16,6 +19,9 @@ export default function Home() {
       <WhyChooseUs />
       <Services />
       <Media />
+      <Blog />
+      <Contact />
+      <Footer />
     </main>
   );
 }
