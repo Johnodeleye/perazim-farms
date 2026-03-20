@@ -10,6 +10,14 @@ const nextConfig = {
         protocol: 'https',
         hostname: 'photos.fife.usercontent.google.com',
       },
+      {
+        protocol: 'https',
+        hostname: 'cdn.jsdelivr.net',
+      },
+       {
+        protocol: 'https',
+        hostname: '**',
+      }
     ],
   },
 }
